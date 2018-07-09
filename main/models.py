@@ -15,7 +15,7 @@ class Gym(models.Model):
 
 class Post(models.Model):
     name = str(User.first_name) + str(User.last_name)
-    date = models.DateTimeField()
+    #date = models.DateTimeField()
     muscles_trained = models.CharField(max_length=50)
     gym_buddy = False
     gym = Gym.name
