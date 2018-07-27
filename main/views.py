@@ -37,3 +37,7 @@ def logout_view(request):
 @login_required
 def about(request):
    return render(request, 'main/about.html')
+
+@login_required
+def find(request):
+   return render(request, 'main/find.html')
