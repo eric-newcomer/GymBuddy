@@ -8,7 +8,9 @@ from .backend import authenticate
 
 
 def index(request):
-   return render(request, 'main/landing.html')
+    if request.user.is_authenticated:
+        return render(request, 'main/home.html')
+    return render(request, 'main/landing.html')
 
 class LoginView(View):
 
