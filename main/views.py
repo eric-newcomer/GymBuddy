@@ -6,9 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from .backend import authenticate
 
-@login_required
+
 def index(request):
-   return render(request, 'main/home.html')
+   return render(request, 'main/landing.html')
 
 class LoginView(View):
 
