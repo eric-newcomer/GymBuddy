@@ -5,7 +5,24 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from .backend import authenticate
+from .forms import SignUpForm
 
+
+
+def signup(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(request, username=username, password=raw_password)
+            user.save()
+            login(request, user)
+            return redirect('/')
+    else:
+        form = SignUpForm()
+    return render(request, 'main/signup.html', {'form': form})
 
 def index(request):
     if request.user.is_authenticated:
