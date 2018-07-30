@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <link rel="shortcut icon" href="{% static 'main/flex.png' %}">
 
-    <title>Sign Up to Liftr</title>
+    <title>Sign up for Liftr</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{% static 'main/bootstrap.min.css' %}" rel="stylesheet">
@@ -22,7 +22,7 @@
 <body class="text-center">
     <form class="form form-signup" method="POST">
         <img class="mb-4" src="{% static 'main/flex.png' %}" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Sign Up for Liftr</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Sign up for Liftr</h1>
         <br>
         {% csrf_token %} 
         {% for field in form %}
