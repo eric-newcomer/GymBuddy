@@ -21,24 +21,39 @@
 
 <body class="text-center">
     <form class="form form-signup" method="POST">
-        {% csrf_token %}
-        <img class="mb-4" src="{% static 'main/flex.png' %}" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Sign Up for Liftr</h1>
-        <input type="username" name="username" class="form-control" placeholder="Username" required autofocus>
-        <input type="firstname" name="firstname" class="form-control" placeholder="First Name" required>
-        <input type="lastname" name="lastname" class="form-control" placeholder="Last Name" required>
-        <input type="email" name="email" class="form-control" placeholder="Email" required>
-        <input type="password" name="password" class="form-control" placeholder="Password" required>
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" value="remember-me"> Remember me
-            </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-        <br>
-        <p>Already have an account? Log in <a href='/login/'>here.</a></p>
-        <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+        {% csrf_token %} 
+        {% for field in form %}
+        <p>
+            {{ field.label_tag }}
+            <br> {{ field }} 
+            {% if field.help_text %}
+            <small style="color: grey">{{ field.help_text }}</small>
+            {% endif %} {% for error in field.errors %}
+            <p style="color: red">{{ error }}</p>
+            {% endfor %}
+        </p>
+        {% endfor %}
+        <button type="submit">Sign up</button>
     </form>
+    {% comment %} <img class="mb-4" src="{% static 'main/flex.png' %}" alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Sign Up for Liftr</h1>
+    <input type="username" name="username" class="form-control" placeholder="Username" required autofocus>
+    <input type="firstname" name="firstname" class="form-control" placeholder="First Name" required>
+    <input type="lastname" name="lastname" class="form-control" placeholder="Last Name" required>
+    <input type="email" name="email" class="form-control" placeholder="Email" required>
+    <input type="password" name="password" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+    <br>
+    <p>Already have an account? Log in
+        <a href='/login/'>here.</a>
+    </p>
+    <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
+    </form> {% endcomment %}
 </body>
 
 </html>

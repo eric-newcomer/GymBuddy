@@ -9,33 +9,23 @@ from .forms import SignUpForm
 
 
 
-class SignupView(View):
-
-    def get(self, request, *args, **kwags):
-        if request.user.is_authenticated:
-            return redirect('/')
-        return render(request, 'main/signup.html')
-
-    def post(self, request, *args, **kwargs):
+def signup(request):
+    if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
-            username = request.POST['username']
-            first_name = request.POST['first_name']
-            last_name = request.POST['last_name']
-            email = request.POST['email']
-            raw_password = request.POST['password1']
-            user = authenticate(username=username, password=raw_password)
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(request, username=username, password=raw_password)
             login(request, user)
-            return redirect('index')
-        else:
-            form = SignUpForm()
-        return render(request, 'main/signup.html', {'form': form})
+            return redirect('/')
+    else:
+        form = SignUpForm()
+    return render(request, 'main/signup.html', {'form': form})
 
+@login_required
 def index(request):
-    if request.user.is_authenticated:
-        return render(request, 'main/home.html')
-    return render(request, 'main/landing.html')
+    return render(request, 'main/home.html')
 
 class LoginView(View):
 
