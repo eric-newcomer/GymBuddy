@@ -20,20 +20,14 @@
 </head>
 
 <body class="text-center">
-    <form class="form form-signup" method="POST" action='/signup/'>
+    <form class="form form-signup" method="POST">
         {% csrf_token %}
-        <img class="mb-4" src="{% static 'css/img/flex.png' %}" alt="" width="72" height="72">
+        <img class="mb-4" src="{% static 'main/flex.png' %}" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Sign Up for Liftr</h1>
-        {% if messages %}
-        <div class="messages">
-            {% for message in messages %}
-            <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% else %} class="alert alert-primary" {% endif %}>{{ message }}</div>
-            {% endfor %}
-        </div>
-        {% endif %}
         <input type="username" name="username" class="form-control" placeholder="Username" required autofocus>
         <input type="firstname" name="firstname" class="form-control" placeholder="First Name" required>
         <input type="lastname" name="lastname" class="form-control" placeholder="Last Name" required>
+        <input type="email" name="email" class="form-control" placeholder="Email" required>
         <input type="password" name="password" class="form-control" placeholder="Password" required>
         <div class="checkbox mb-3">
             <label>
@@ -41,7 +35,9 @@
             </label>
         </div>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+        <br>
+        <p>Already have an account? Log in <a href='/login/'>here.</a></p>
+        <p class="mt-5 mb-3 text-muted">&copy; 2018</p>
     </form>
 </body>
 
