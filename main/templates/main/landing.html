@@ -1,0 +1,23 @@
+{% extends "main/base.html" %} {% load static %} 
+
+{% block pageHeader %}
+<link rel="stylesheet" href="{% static 'main/landing.css' %}" type=text/css>
+<title>Liftr</title> 
+{% endblock pageHeader %}
+
+{% block content %}
+<video autoplay muted loop id="myVideo">
+    <source src="{% static 'main/runmontage.mp4' %}" type="video/mp4">
+</video>
+<div class="title">
+    <h1 class="mainlogo">Liftr</h1>
+</div>
+<div class="home-content">
+    <h1>Need a gym buddy?</h1>
+    <p class="lead">Liftr will match you with the workout partner of your dreams.
+        <br> #StrongerTogether</p>
+    <a class="btn btn-outline-success my-2 my-sm-0" href="/signup/">Sign Up</a>
+    <a class="btn btn-outline-success my-2 my-sm-0" href="/loginview/">Log In</a>
+
+</div>
+{% endblock %}

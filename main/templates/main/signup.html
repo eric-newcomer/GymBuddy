@@ -1,0 +1,48 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="{% static 'main/flex.png' %}">
+
+    <title>Sign Up to Liftr</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'main/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'main/signinup.css' %}" rel="stylesheet">
+</head>
+
+<body class="text-center">
+    <form class="form form-signup" method="POST" action='/signup/'>
+        {% csrf_token %}
+        <img class="mb-4" src="{% static 'css/img/flex.png' %}" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Sign Up for Liftr</h1>
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div {% if message.tags %} class="alert alert-{{ message.tags }}" {% else %} class="alert alert-primary" {% endif %}>{{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <input type="username" name="username" class="form-control" placeholder="Username" required autofocus>
+        <input type="firstname" name="firstname" class="form-control" placeholder="First Name" required>
+        <input type="lastname" name="lastname" class="form-control" placeholder="Last Name" required>
+        <input type="password" name="password" class="form-control" placeholder="Password" required>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+    </form>
+</body>
+
+</html>
