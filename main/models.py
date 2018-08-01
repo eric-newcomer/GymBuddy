@@ -8,8 +8,6 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
-    age = models.IntegerField(max_length=2, blank=True)
-    activity1 = models.CharField(max_length=50, blank=True)
     activity2 = models.CharField(max_length=50, blank=True)
 
 @receiver(post_save, sender=User)

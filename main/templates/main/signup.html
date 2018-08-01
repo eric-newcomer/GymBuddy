@@ -28,20 +28,17 @@
         {% for field in signup_form %}
         <p>
             {{ field.label_tag }}
+            {% if field == signup_form.favorite_gym_activity %}
+            <br>
+            (bodybuilding, powerlifting, running, etc.)
+            {% endif %}
             <br> 
-            {{ field }} 
+            {{ field }}
             <br>
             {% for error in field.errors %}
                 <p style="color: red">{{ error }}</p>
             {% endfor %}
-            {% endfor %}
-            <br>
-            Favorite Gym Activity: 
-            <br>
-            (bodybuilding, powerlifting, running, etc.)
-            <br>
-            {{ profile_form.activity1 }}
-            <br>
+        {% endfor %}
         </p>
         <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
