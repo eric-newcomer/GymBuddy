@@ -9,7 +9,8 @@ class Profile(models.Model):
     bio = models.TextField(max_length=500, blank=True)
     location = models.CharField(max_length=30, blank=True)
     age = models.IntegerField(max_length=2, blank=True)
-
+    activity1 = models.CharField(max_length=50, blank=True)
+    activity2 = models.CharField(max_length=50, blank=True)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):

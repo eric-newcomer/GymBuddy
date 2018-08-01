@@ -25,7 +25,7 @@
         <h1 class="h3 mb-3 font-weight-normal">Sign up for Liftr</h1>
         <br>
         {% csrf_token %} 
-        {% for field in form %}
+        {% for field in signup_form %}
         <p>
             {{ field.label_tag }}
             <br> 

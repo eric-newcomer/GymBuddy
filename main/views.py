@@ -5,23 +5,29 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from .backend import authenticate
-from .forms import SignUpForm
+from .forms import SignUpForm, ProfileForm
 
 
 
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
-        if form.is_valid():
-            form.save()
+        signup_form = SignUpForm(request.POST)
+        profile_form = ProfileForm(request.POST)
+        if signup_form.is_valid() and profile_form.is_valid():
+            signup_form.save()
+            profile_form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(request, username=username, password=raw_password)
             login(request, user)
             return redirect('/')
     else:
-        form = SignUpForm()
-    return render(request, 'main/signup.html', {'form': form})
+        signup_form = SignUpForm()
+        profile_form = ProfileForm()
+    return render(request, 'main/signup.html', {
+        'signup_form': signup_form,
+        'profile_form': profile_form,
+        })
 
 @login_required
 def index(request):
