@@ -56,5 +56,9 @@ def about(request):
    return render(request, 'main/about.html')
 
 @login_required
-def find(request):
-   return render(request, 'main/find.html')
+def workout(request):
+   return render(request, 'main/workout.html')
+
+@login_required
+def feed(request):
+   return render(request, 'main/feed.html')
