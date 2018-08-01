@@ -31,8 +31,19 @@
             <br> 
             {{ field }} 
             <br>
+            {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+            {% endfor %}
+            {% endfor %}
+            <br>
+            Favorite Gym Activity: 
+            <br>
+            (bodybuilding, powerlifting, running, etc.)
+            <br>
+            {{ profile_form.activity1 }}
+            <br>
         </p>
-        {% endfor %}
+        <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
         <br>
         <p>Already have an account? Log in
