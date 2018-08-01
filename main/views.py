@@ -12,10 +12,8 @@ from .forms import SignUpForm, ProfileForm
 def signup(request):
     if request.method == 'POST':
         signup_form = SignUpForm(request.POST)
-        profile_form = ProfileForm(request.POST)
         if signup_form.is_valid():
             signup_form.save()
-            profile_form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(request, username=username, password=raw_password)
@@ -23,10 +21,8 @@ def signup(request):
             return redirect('/')
     else:
         signup_form = SignUpForm()
-        profile_form = ProfileForm()
     return render(request, 'main/signup.html', {
         'signup_form': signup_form,
-        'profile_form': profile_form,
         })
 
 @login_required
