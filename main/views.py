@@ -68,3 +68,7 @@ def workout(request):
 @login_required
 def feed(request):
    return render(request, 'main/feed.html')
+
+@login_required
+def profile(request):
+    return render(request, 'main/profile.html')
