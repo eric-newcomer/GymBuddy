@@ -28,10 +28,6 @@
         {% for field in signup_form %}
         <p>
             {{ field.label_tag }}
-            {% if field == signup_form.favorite_gym_activity %}
-            <br>
-            {{(bodybuilding, powerlifting, running, etc.)}}
-            {% endif %}
             <br> 
             {{ field }}
             <br>
