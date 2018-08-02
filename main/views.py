@@ -27,7 +27,11 @@ def signup(request):
 
 @login_required
 def index(request):
-    return render(request, 'main/landing.html')
+    user_activity = request.user.profile.activity1
+    context = {
+        'user_activity': user_activity,
+    }
+    return render(request, 'main/landing.html', context)
 
 class LoginView(View):
 

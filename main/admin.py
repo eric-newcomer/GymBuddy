@@ -28,4 +28,3 @@ admin.site.register(User, CustomUserAdmin)
 
 admin.site.register(Post)
 admin.site.register(Gym)
-admin.site.register(Profile)
