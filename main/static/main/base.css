@@ -15,6 +15,16 @@ body {
   min-height: 100%;
 }
 
+.main-info {
+  margin-top: 3%;
+  text-align: left;
+}
+
+.main-jumbo {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
 
 
 
