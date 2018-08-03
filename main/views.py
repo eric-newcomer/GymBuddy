@@ -77,3 +77,24 @@ def profile(request):
         'user': user,
     }
     return render(request, 'main/profile.html')
+
+@login_required
+def profile_edit(request):
+    if request.method == 'POST':
+        user = request.user
+        profile = request.user.profile
+        profile_form = ProfileForm(request.POST, instance=profile)
+        if profile_form.is_valid():
+            profile_form.save()
+            print('Profile successfully updated.')
+            return redirect('/profile')
+        else:
+            print('Error!')
+    else:
+        profile = request.user.profile
+        profile_form = ProfileForm(instance=request.user.profile)
+    return render(request, 'main/profile_edit.html', {
+        'profile_form': profile_form,
+        'profile': profile,
+    })
+
