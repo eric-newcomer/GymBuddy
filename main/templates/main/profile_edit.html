@@ -1,7 +1,23 @@
 {% extends "main/base.html" %} {% block content %} {% load static %} {% include "main/navbar.html" %}
 <div class="jumbotron">
     <div class="main-jumbo">
-        
+        <form method="POST" action="/profile_edit/">
+            {% csrf_token %}
+            <div class="col-md-12">
+                {% for field in user_form %}
+                <p>
+                    {{ field.help_text }}
+                    <br> {{ field }} {% endfor %}
+                </p>
+                {% for field in profile_form %}
+                <p>
+                    {{ field.help_text }}
+                    <br> {{ field }} {% endfor %}
+                </p>
+            </div>
+            <button type="submit">Save
+            </button>
+        </form>
     </div>
 </div>
 {% endblock %}

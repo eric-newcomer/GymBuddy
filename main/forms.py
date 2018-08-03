@@ -14,7 +14,21 @@ class SignUpForm(UserCreationForm):
         fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2')
 
 
+class UserForm(forms.ModelForm):
+    username = forms.CharField(max_length=30, required=False, help_text="Username:")
+    first_name = forms.CharField(max_length=30, required=False, help_text="First name:")
+    last_name = forms.CharField(max_length=30, required=False, help_text="Last name:") 
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name')
+
+
 class ProfileForm(forms.ModelForm):
+    bio = forms.CharField(max_length=500, required=False, help_text="Bio:", widget=forms.Textarea)
+    location = forms.CharField(max_length=30, required=False, help_text="Location:")
+    activity1 = forms.CharField(max_length=50, required = False, help_text="Favorite Gym Activity:")
+    activity2 = forms.CharField(max_length=50, required = False, help_text="Secondary Favorite Activity:")
+
     class Meta:
         model = Profile
         fields = ('bio', 'location', 'activity1', 'activity2')

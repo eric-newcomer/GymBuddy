@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from .backend import authenticate
-from .forms import SignUpForm, ProfileForm
+from .forms import SignUpForm, ProfileForm, UserForm
 
 
 
@@ -81,20 +81,20 @@ def profile(request):
 @login_required
 def profile_edit(request):
     if request.method == 'POST':
-        user = request.user
-        profile = request.user.profile
-        profile_form = ProfileForm(request.POST, instance=profile)
-        if profile_form.is_valid():
+        user_form = UserForm(request.POST, instance=request.user)
+        profile_form = ProfileForm(request.POST, instance=request.user.profile)
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
             profile_form.save()
             print('Profile successfully updated.')
             return redirect('/profile')
         else:
             print('Error!')
     else:
-        profile = request.user.profile
+        user_form = UserForm(instance=request.user)
         profile_form = ProfileForm(instance=request.user.profile)
     return render(request, 'main/profile_edit.html', {
+        'user_form': user_form,
         'profile_form': profile_form,
-        'profile': profile,
     })
 
