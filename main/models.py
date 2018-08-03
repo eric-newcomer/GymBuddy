@@ -10,6 +10,7 @@ class Profile(models.Model):
     location = models.CharField(max_length=30, blank=True)
     activity1 = models.CharField(max_length=50, blank=True)
     activity2 = models.CharField(max_length=50, blank=True)
+    website = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.user.username
