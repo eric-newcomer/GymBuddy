@@ -1,6 +1,8 @@
 {% extends "main/base.html" %} {% block content %} {% load static %} {% include "main/navbar.html" %}
 <div class="jumbotron">
     <div class="main-jumbo">
+        <h2>Edit Profile</h2>
+        <br>
         <form method="POST" action="/profile_edit/">
             {% csrf_token %}
             <div class="col-md-12">

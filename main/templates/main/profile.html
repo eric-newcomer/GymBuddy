@@ -10,6 +10,11 @@
                     <p>Favorite Gym Activity:
                         <strong>{{ user.profile.activity1 }}</strong>
                     </p>
+                    {% if user.profile.activity2 %}
+                    <p>Second Favorite Activity:
+                        <strong>{{ user.profile.activity2 }}</strong>
+                    </p>
+                    {% endif %}
                     <p>{{ user.profile.bio }}</p>
                     <a class="btn btn-liftr" style="width: 100%;" href="/profile_edit/">Edit Profile</a>
                 </div>
