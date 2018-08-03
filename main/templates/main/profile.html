@@ -5,10 +5,10 @@
             <div class="col-md-4">
                 <img class="img-fluid" src="https://avatars0.githubusercontent.com/u/20120289?s=460&v=4">
                 <div class="main-info">
-                    <h2>Eric Newcomer</h2>
-                    <p>@ericnewcomer</p>
+                    <h2>{{ user.first_name }} {{ user.last_name }}</h2>
+                    <p>@{{user.username}}</p>
                     <p>Favorite Gym Activity:
-                        <strong>Powerlifting</strong>
+                        <strong>{{ user.profile.activity1 }}</strong>
                     </p>
                     <p>This is going to be where the bio is of the person/profile and where all the info is blah blah blah.
                     </p>
@@ -25,8 +25,10 @@
                 <div class="body-info" style="margin-left: 5%;">
                     <div class="navbar navbar-expand-md">
                         <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/">Workout Log</a>
+                            <li class="nav-item active">
+                                <a class="nav-link" href="/">Workout Log
+                                <span class="sr-only">(current)</span>
+                            </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="/">Friends</a>

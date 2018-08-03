@@ -71,4 +71,9 @@ def feed(request):
 
 @login_required
 def profile(request):
+    user = request.user
+    profile = request.user.profile
+    context = {
+        'user': user,
+    }
     return render(request, 'main/profile.html')
