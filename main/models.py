@@ -32,14 +32,4 @@ class Gym(models.Model):
     def __str__(self):
         return self.name
 
-class Post(models.Model):
-    name = str(User.first_name) + str(User.last_name)
-    #date = models.DateTimeField()
-    muscles_trained = models.CharField(max_length=50)
-    gym_buddy = False
-    gym = Gym.name
-    image = None
-
-    def __str__(self):
-        return self.name
 
