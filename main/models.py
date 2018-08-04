@@ -11,7 +11,9 @@ class Profile(models.Model):
     activity1 = models.CharField(max_length=50, blank=True)
     activity2 = models.CharField(max_length=50, blank=True)
     website = models.CharField(max_length=100, blank=True)
-    image = models.ImageField(upload_to='profile_images', blank=True)
+    image = models.ImageField(upload_to='profile_pics', blank=True)
+
+    objects = models.Manager()
 
     def __str__(self):
         return self.user.username
