@@ -14,8 +14,8 @@ def signup(request):
         signup_form = SignUpForm(request.POST)
         if signup_form.is_valid():
             signup_form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password1')
+            username = signup_form.cleaned_data.get('username')
+            raw_password = signup_form.cleaned_data.get('password1')
             user = authenticate(request, username=username, password=raw_password)
             login(request, user)
             return redirect('/')
