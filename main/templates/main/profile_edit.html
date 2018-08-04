@@ -13,8 +13,15 @@
                 </p>
                 {% for field in profile_form %}
                 <p>
+                    {% if field == profile_form.image %}
+                    Profile Picture:
+                    <br>
+                    {{ profile_form.image }}
+                    {% else %}
                     {{ field.help_text }}
-                    <br> {{ field }} {% endfor %}
+                    <br> {{ field }} 
+                    {% endif %}
+                    {% endfor %}
                 </p>
             </div>
             <button type="submit">Save
