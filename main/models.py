@@ -16,6 +16,7 @@ class Profile(models.Model):
     objects = models.Manager()
 
     def __str__(self):
+        #pylint: disable=no-member
         return self.user.username
 
 @receiver(post_save, sender=User)
