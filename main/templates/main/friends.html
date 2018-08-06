@@ -4,5 +4,8 @@
 {% include "main/navbar.html" %}
 <div class="jumbotron">
     <h1>Liftr Matches</h1>
+    {% for friend in friend_list %}
+    <p>{{ friend.username }}</p>
+    {% endfor %}
 </div>
 {% endblock %}
