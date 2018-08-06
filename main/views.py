@@ -66,8 +66,8 @@ def workout(request):
    return render(request, 'main/workout.html')
 
 @login_required
-def feed(request):
-   return render(request, 'main/feed.html')
+def friends(request):
+   return render(request, 'main/friends.html')
 
 @login_required
 def profile(request):
