@@ -6,6 +6,9 @@ from django.contrib.auth.decorators import login_required
 from django.views import View
 from .backend import authenticate
 from .forms import SignUpForm, ProfileForm, UserForm
+from django.contrib.auth.models import User
+from fuzzywuzzy import fuzz
+
 
 
 
@@ -59,15 +62,22 @@ def logout_view(request):
 
 @login_required
 def about(request):
-   return render(request, 'main/about.html')
+    return render(request, 'main/about.html')
 
 @login_required
 def workout(request):
-   return render(request, 'main/workout.html')
+    return render(request, 'main/workout.html')
 
 @login_required
 def friends(request):
-   return render(request, 'main/friends.html')
+    friend_list = []
+    current_user = request.user
+    users = User.objects.all()
+    for user in users:
+        if current_user.profile.activity1 == user.profile.activity1:
+            pass
+
+    return render(request, 'main/friends.html')
 
 @login_required
 def profile(request):
