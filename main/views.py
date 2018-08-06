@@ -74,10 +74,13 @@ def friends(request):
     current_user = request.user
     users = User.objects.all()
     for user in users:
-        if current_user.profile.activity1 == user.profile.activity1:
-            pass
-
-    return render(request, 'main/friends.html')
+        if fuzz.ratio(current_user.profile.activity1, user.profile.activity1) > 85 and user != current_user:
+            friend_list.append(user)
+    print(friend_list)
+    context = {
+        'friend_list': friend_list,
+    }
+    return render(request, 'main/friends.html', context)
 
 @login_required
 def profile(request):
