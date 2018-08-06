@@ -11,7 +11,7 @@ class Profile(models.Model):
     activity1 = models.CharField(max_length=50, blank=True)
     activity2 = models.CharField(max_length=50, blank=True)
     website = models.CharField(max_length=100, blank=True)
-    image = models.ImageField(upload_to='profile_pics', blank=True)
+    image = models.ImageField(upload_to='profile_pics', default='profile_pics/default.png')
 
     objects = models.Manager()
 

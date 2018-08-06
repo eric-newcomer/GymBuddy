@@ -28,7 +28,7 @@ class ProfileForm(forms.ModelForm):
     location = forms.CharField(max_length=30, required=False, help_text="Location:")
     activity1 = forms.CharField(max_length=50, required = False, help_text="Favorite Gym Activity:")
     activity2 = forms.CharField(max_length=50, required = False, help_text="Secondary Favorite Activity:")
-    image = forms.ImageField(required = False)
+    image = forms.ImageField()
 
     class Meta:
         model = Profile

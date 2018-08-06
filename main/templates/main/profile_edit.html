@@ -3,7 +3,7 @@
     <div class="main-jumbo">
         <h2>Edit Profile</h2>
         <br>
-        <form method="POST" action="/profile_edit/">
+        <form method="POST" action="/profile_edit/" enctype="multipart/form-data">
             {% csrf_token %}
             <div class="col-md-12">
                 {% for field in user_form %}

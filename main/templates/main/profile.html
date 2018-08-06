@@ -6,7 +6,7 @@
                 {% if user.profile.image %}
                 <img class="img-responsive" src="{{ user.profile.image.url }}" width="100%">
                 {% else %}
-                <img class="img-responsive" src="https://avatars3.githubusercontent.com/u/5199552?s=88&v=4" width="100%">
+                <img class="img-responsive" src="{{ profile_pics/default.png }}" width="100%">
                 {% endif %}
                 <div class="main-info">
                     <h2>{{ user.first_name }} {{ user.last_name }}</h2>
