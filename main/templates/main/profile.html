@@ -3,7 +3,7 @@
     <div class="main-jumbo">
         <div class="row">
             <div class="col-md-4">
-                {% if user.profile.image.url != '' %}
+                {% if user.profile.image %}
                 <img class="img-responsive" src="{{ user.profile.image.url }}" width="100%">
                 {% else %}
                 <img class="img-responsive" src="https://avatars3.githubusercontent.com/u/5199552?s=88&v=4" width="100%">
