@@ -1,11 +1,26 @@
-{% extends "main/base.html" %} 
-{% block content %} 
-{% load static %} 
-{% include "main/navbar.html" %}
+{% extends "main/base.html" %} {% block content %} {% load static %} {% include "main/navbar.html" %}
 <div class="jumbotron">
     <h1>Liftr Friends</h1>
     {% for friend in friend_list %}
-    <p>{{ friend.username }}</p>
+    <div class="card" style="margin: 2%;">
+        <div class="row" style="margin: 2%;">
+            <div class="col-md-2">
+                <img class="card-img-left" src="{{ friend.profile.image.url }}" alt="Card image cap" style="height:164px;width:auto;" align="left">
+            </div>
+            <div class="col-md-10">
+                <div class="card-body" align="left" style="margin-left: 2%;">
+                    <h5 class="card-title">{{friend.get_full_name}}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">@{{ friend.username }}</h6>
+                    <p class="card-text">{{ friend.profile.bio }}</p>
+                    <div class="row">
+                        <p style="margin-left: 2%;">
+                            <i class="fas fa-map-marker-alt"></i> {{ friend.profile.location }}</p>
+                        <a style="margin-left: 2%;" href="{{ friend.profile.website }}">{{ friend.profile.website }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     {% endfor %}
 </div>
 {% endblock %}
