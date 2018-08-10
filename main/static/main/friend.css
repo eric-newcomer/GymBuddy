@@ -1,0 +1,12 @@
+.card-body {
+    text-align: left;
+    margin-left: 2%;
+    display:block;
+}
+
+.card-img-left {
+    height: 164px;
+    width: auto;
+    display: block;
+    margin-right: 2%;
+}
