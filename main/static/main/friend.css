@@ -1,12 +1,12 @@
 .card-body {
     text-align: left;
-    margin-left: 2%;
-    display:block;
+    margin-left: 5px;
+    display: block;
 }
 
 .card-img-left {
     height: 164px;
-    width: auto;
+    width: 164px;
     display: block;
     margin-right: 2%;
 }
