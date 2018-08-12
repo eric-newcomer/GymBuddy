@@ -79,6 +79,7 @@ def friends(request):
     print(friend_list)
     context = {
         'friend_list': friend_list,
+        'current_user': current_user,
     }
     return render(request, 'main/friends.html', context)
 
