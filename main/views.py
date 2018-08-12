@@ -71,14 +71,18 @@ def workout(request):
 @login_required
 def friends(request):
     friend_list = []
+    friend_list_2 = []
     current_user = request.user
     users = User.objects.all()
     for user in users:
         if fuzz.ratio(current_user.profile.activity1, user.profile.activity1) > 85 and user != current_user:
             friend_list.append(user)
-    print(friend_list)
+    for user in users:
+        if fuzz.ratio(current_user.profile.activity2, user.profile.activity2) > 85 and user != current_user:
+            friend_list_2.append(user)
     context = {
         'friend_list': friend_list,
+        'friend_list_2': friend_list_2,
         'current_user': current_user,
     }
     return render(request, 'main/friends.html', context)

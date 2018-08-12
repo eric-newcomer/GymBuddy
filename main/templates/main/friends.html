@@ -1,9 +1,16 @@
 {% extends "main/base.html" %} {% load static %} {% block pageHeader %}
 <link rel="stylesheet" href="{% static 'main/friend.css' %}" type=text/css> {% endblock pageHeader %} {% block content %} {% include "main/navbar.html" %}
-<div class="jumbotron">
-    <h2>GymBuddies who also like <strong>{{ current_user.profile.activity1 }}</strong></h2>
+<div class="jumbotron container-fluid">
+    {% if friend_list|length == 0 %}
+    <h2>There are no GymBuddies near you that like
+        <strong>{{ current_user.profile.activity1 }}</strong> :(</h2>
+    {% else %}
+    <h2>GymBuddies who like
+        <strong>{{ current_user.profile.activity1 }}</strong>
+    </h2>
+    {% endif %}
     <div class="row" style="margin:auto;">
-    {% for friend in friend_list %}
+        {% for friend in friend_list %}
         <div class="card" style="margin:auto; margin-top:3vw; width:18rem;">
             <img class="card-img-top" src="{{ friend.profile.image.url }}" alt="Card image cap">
             <div class="card-body">
@@ -14,6 +21,27 @@
             </div>
         </div>
     </div>
+    {% endfor %} {% if friend_list_2|length == 0 %}
+    <h2>There are no GymBuddies near you that like
+        <strong>{{ current_user.profile.activity2 }}</strong> :(</h2>
+    {% else %}
+    <h2>GymBuddies who like
+        <strong>{{ current_user.profile.activity2 }}</strong>
+    </h2>
+    {% endif %}
+    <div class="row" style="margin:auto;">
+        {% for friend in friend_list_2 %}
+        <div class="card" style="margin:auto; margin-top:3vw; width:18rem;">
+            <img class="card-img-top" src="{{ friend.profile.image.url }}" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{friend.get_full_name}}</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@{{ friend.username }}</h6>
+                <p class="card-text">{{ friend.profile.bio }}</p>
+                <a href="#" class="btn btn-primary">Message</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
     <!-- <div class="container">
         <div class="card" style="margin: 2%;">
             <div class="row" style="margin: 2%;">
@@ -35,6 +63,6 @@
             </div>
         </div>
     </div> -->
-    {% endfor %}
+
 </div>
 {% endblock %}
