@@ -6,14 +6,14 @@
 <div class="jumbotron">
     <h1>GymBuddy Buddies</h1>
     {% for friend in friend_list %}
-    <div class="container py-3">
+    <div class="container">
         <div class="card" style="margin: 2%;">
             <div class="row" style="margin: 2%;">
                 <div class="col-md-2">
                     <img class="card-img-left" src="{{ friend.profile.image.url }}" alt="Card image cap" align="left">
                 </div>
-                <div class="col-md-10 px-3">
-                    <div class="card-body px-3">
+                <div class="col-md-10">
+                    <div class="card-body">
                         <h5 class="card-title">{{friend.get_full_name}}</h5>
                         <h6 class="card-subtitle mb-2 text-muted">@{{ friend.username }}</h6>
                         <p class="card-text">{{ friend.profile.bio }}</p>
