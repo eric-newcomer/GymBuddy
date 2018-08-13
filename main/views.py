@@ -9,6 +9,7 @@ from .forms import SignUpForm, ProfileForm, UserForm, WorkoutForm
 from django.contrib.auth.models import User
 from fuzzywuzzy import fuzz
 
+
 def signup(request):
     if request.method == 'POST':
         signup_form = SignUpForm(request.POST)
@@ -16,14 +17,16 @@ def signup(request):
             signup_form.save()
             username = signup_form.cleaned_data.get('username')
             raw_password = signup_form.cleaned_data.get('password1')
-            user = authenticate(request, username=username, password=raw_password)
+            user = authenticate(request, username=username,
+                                password=raw_password)
             login(request, user)
             return redirect('/')
     else:
         signup_form = SignUpForm()
     return render(request, 'main/signup.html', {
         'signup_form': signup_form,
-        })
+    })
+
 
 @login_required
 def index(request):
@@ -32,6 +35,7 @@ def index(request):
         'user_activity': user_activity,
     }
     return render(request, 'main/landing.html', context)
+
 
 class LoginView(View):
 
@@ -52,14 +56,17 @@ class LoginView(View):
                 request, 'Failed to sign in! Please check your name and PIN', extra_tags='danger')
             return redirect('/login')
 
+
 @login_required
 def logout_view(request):
     logout(request)
     return redirect('/login')
 
+
 @login_required
 def about(request):
     return render(request, 'main/about.html')
+
 
 @login_required
 def friends(request):
@@ -80,6 +87,7 @@ def friends(request):
     }
     return render(request, 'main/friends.html', context)
 
+
 @login_required
 def profile(request):
     user = request.user
@@ -89,11 +97,13 @@ def profile(request):
     }
     return render(request, 'main/profile.html')
 
+
 @login_required
 def profile_edit(request):
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
-        profile_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
+        profile_form = ProfileForm(
+            request.POST, request.FILES, instance=request.user.profile)
         if user_form.is_valid() and profile_form.is_valid():
             user_form.save()
             profile_form.save()
@@ -109,6 +119,7 @@ def profile_edit(request):
         'profile_form': profile_form,
     })
 
+
 @login_required
 def workout(request):
     if request.method == "POST":
@@ -117,7 +128,7 @@ def workout(request):
             form.save()
             print('Workout successfully logged.')
             return redirect('/')
-        else: 
+        else:
             print("Error!")
     else:
         form = WorkoutForm()
