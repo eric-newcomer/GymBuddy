@@ -2,6 +2,21 @@
 <div class="jumbotron container-fluid">
     <h2>Start a workout</h2>
     <br>
-    
+    <form method="POST" action="/workout/">
+        {% csrf_token %}
+        <div class="col-md-12">
+            {% for field in form %}
+            <p>
+                {{ field.help_text }}
+                {% if not field.help_text %}
+                <label>When?</label> 
+                {% endif %}
+                <br> {{ field }} {% endfor %}
+            </p>
+        </div>
+        <button type="submit">Save
+        </button>
+    </form>
+
 </div>
 {% endblock %}

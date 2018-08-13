@@ -5,12 +5,9 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.views import View
 from .backend import authenticate
-from .forms import SignUpForm, ProfileForm, UserForm
+from .forms import SignUpForm, ProfileForm, UserForm, WorkoutForm
 from django.contrib.auth.models import User
 from fuzzywuzzy import fuzz
-
-
-
 
 def signup(request):
     if request.method == 'POST':
@@ -65,10 +62,6 @@ def about(request):
     return render(request, 'main/about.html')
 
 @login_required
-def workout(request):
-    return render(request, 'main/workout.html')
-
-@login_required
 def friends(request):
     friend_list = []
     friend_list_2 = []
@@ -116,3 +109,18 @@ def profile_edit(request):
         'profile_form': profile_form,
     })
 
+@login_required
+def workout(request):
+    if request.method == "POST":
+        form = WorkoutForm(request.POST)
+        if form.is_valid():
+            form.save()
+            print('Workout successfully logged.')
+            return redirect('/')
+        else: 
+            print("Error!")
+    else:
+        form = WorkoutForm()
+    return render(request, 'main/workout.html', {
+        'form': form,
+    })
