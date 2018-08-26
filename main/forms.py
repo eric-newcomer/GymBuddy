@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from .models import Profile, Workout
+import datetime
 
 
 class SignUpForm(UserCreationForm):
@@ -37,7 +38,7 @@ class ProfileForm(forms.ModelForm):
 class WorkoutForm(forms.ModelForm):
     what = forms.CharField(max_length=100, required=False, help_text='What are you training?')
     gym = forms.CharField(max_length=100, required=False, help_text='Where?')
-    time = forms.CharField(max_length=100, required=False)
+    time = forms.DateTimeField(initial=datetime.datetime.now(), required=False)
 
     class Meta:
         model = Workout

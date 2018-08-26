@@ -33,13 +33,19 @@
                         <h3>Workout Log</h3>
                         <a class="btn btn-outline-success my-2 my-sm-0" href="/workout/" style="margin-left: auto;">Add Workout</a>
                     </div>
-                    <hr>
-                    <p>Eric trained upper body at Energy Health Club.</p>
-                    <p>Tuesday, 6:30am</p>
+                    <hr> {% for wkt in workouts %}
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="card-title"><strong>{{user.first_name}} trained {{wkt.what}} at {{wkt.gym}}.</strong></p>
+                            <p class="card-text">{{wkt.time}}</p>
+                        </div>
+                    </div>
                 </div>
+                {% endfor %}
             </div>
         </div>
     </div>
+</div>
 </div>
 
 {% endblock %}
