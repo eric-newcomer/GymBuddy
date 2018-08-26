@@ -31,6 +31,9 @@ class Workout(models.Model):
     gym = models.CharField(max_length=100, blank=True)
     time = models.CharField(max_length=100, blank=True)
 
+    def __str__(self):
+        return self.what
+
 
 class Gym(models.Model):
     name = models.CharField(max_length=50)
