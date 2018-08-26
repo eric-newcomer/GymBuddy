@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import Profile, Workout
 
 
 class SignUpForm(UserCreationForm):
@@ -34,10 +34,11 @@ class ProfileForm(forms.ModelForm):
         model = Profile
         fields = ('bio', 'location', 'activity1', 'activity2', 'image')
 
-class WorkoutForm(forms.Form):
+class WorkoutForm(forms.ModelForm):
     what = forms.CharField(max_length=100, required=False, help_text='What are you training?')
     gym = forms.CharField(max_length=100, required=False, help_text='Where?')
-    time = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
+    time = forms.CharField(max_length=100, required=False)
 
     class Meta:
+        model = Workout
         fields = ('what', 'gym', 'time')

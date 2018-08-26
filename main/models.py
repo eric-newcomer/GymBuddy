@@ -26,6 +26,12 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
     instance.profile.save()
 
 
+class Workout(models.Model):
+    what = models.CharField(max_length=100, blank=True)
+    gym = models.CharField(max_length=100, blank=True)
+    time = models.CharField(max_length=100, blank=True)
+
+
 class Gym(models.Model):
     name = models.CharField(max_length=50)
     city = models.CharField(max_length=50)
