@@ -33,3 +33,11 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ('bio', 'location', 'activity1', 'activity2', 'image')
+
+class WorkoutForm(forms.Form):
+    type = forms.CharField(max_length=100, required=False, help_text='What are you training?')
+    gym = forms.CharField(max_length=100, required=False, help_text='Where?')
+    time = forms.TimeField(widget=forms.TimeInput(format='%H:%M'))
+
+    class Meta:
+        fields = ('type', 'gym', 'time')
