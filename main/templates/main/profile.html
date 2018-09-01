@@ -33,19 +33,16 @@
                         <h3>Workout Log</h3>
                         <a class="btn btn-outline-success my-2 my-sm-0" href="/workout/" style="margin-left: auto;">Add Workout</a>
                     </div>
-                    <hr> {% for wkt in workouts %}
-                    <div class="card">
-                        <div class="card-body">
-                            <p class="card-title"><strong>{{user.first_name}} trained {{wkt.what}} at {{wkt.gym}}.</strong></p>
-                            <p class="card-text">{{wkt.time}}</p>
-                        </div>
-                    </div>
+                    <hr>
+                    <ul class="list-group">
+                        {% for wkt in workouts %}
+                        <li class="list-group-item"style="width: 100vw;"><strong>{{user.first_name}} trained {{wkt.what}} at {{wkt.gym}} at {{wkt.time}}</strong></li>
+                        {% endfor %}
+                    </ul>
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>
 </div>
 </div>
-
 {% endblock %}

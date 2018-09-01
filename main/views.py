@@ -129,7 +129,7 @@ def workout(request):
         if form.is_valid():
             form.save()
             print('Workout successfully logged.')
-            return redirect('/')
+            return redirect('/profile')
         else:
             print("Error!")
     else:

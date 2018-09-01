@@ -38,8 +38,7 @@ class ProfileForm(forms.ModelForm):
 class WorkoutForm(forms.ModelForm):
     what = forms.CharField(max_length=100, required=False, help_text='What are you training?')
     gym = forms.CharField(max_length=100, required=False, help_text='Where?')
-    time = forms.DateTimeField(initial=datetime.datetime.now(), required=False)
 
     class Meta:
         model = Workout
-        fields = ('what', 'gym', 'time')
+        fields = ('what', 'gym')

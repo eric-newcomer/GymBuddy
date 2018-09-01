@@ -30,7 +30,7 @@ def create_or_update_user_profile(sender, instance, created, **kwargs):
 class Workout(models.Model):
     what = models.CharField(max_length=100, blank=True)
     gym = models.CharField(max_length=100, blank=True)
-    time = models.DateTimeField(default=timezone.now(), blank=True)
+    time = models.DateTimeField(auto_now_add=True)
 
     objects = models.Manager()
 
