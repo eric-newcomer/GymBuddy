@@ -36,7 +36,8 @@
                     <hr>
                     <ul class="list-group">
                         {% for wkt in workouts %}
-                        <li class="list-group-item"style="width: 100vw;"><strong>{{user.first_name}} trained {{wkt.what}} at {{wkt.gym}} at {{wkt.time}}</strong></li>
+                        <li class="list-group-item"><strong>{{user.first_name}} trained {{wkt.what}} at {{wkt.gym}} at {{wkt.time}}</strong></li>
+                        <hr>
                         {% endfor %}
                     </ul>
                 </div>

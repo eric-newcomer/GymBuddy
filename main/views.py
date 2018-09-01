@@ -92,7 +92,7 @@ def friends(request):
 @login_required
 def profile(request):
     user = request.user
-    workouts = Workout.objects.all()
+    workouts = Workout.objects.all().order_by('-time')
     context = {
         'user': user,
         'workouts': workouts,
