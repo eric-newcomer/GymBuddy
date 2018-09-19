@@ -1,2 +1,2 @@
 # GymBuddy
-GymBuddy is a matchmaking web-app for gym-goers, built with Django 2 and PostgreSQL.
+GymBuddy is a matchmaking web application for gym-goers. It is built using Python/Django, Javascript, and HTML/CSS.
